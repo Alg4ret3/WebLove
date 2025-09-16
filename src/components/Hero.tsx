@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         >
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-2xl flex items-center justify-center overflow-hidden border-4 border-white/50">
             <img
-              src="/public/perfil.jpg"
+              src="/perfil.jpg"
               alt="Alejandra"
               className="w-full h-full object-cover"
             />
