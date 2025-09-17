@@ -3,7 +3,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Heart } from "lucide-react";
-import emailjs from "@emailjs/browser"; // <- Asegúrate de instalarlo: npm install @emailjs/browser
+import emailjs from "@emailjs/browser";
+
+// Constantes para EmailJS (reemplaza con tus valores)
+const SERVICE_ID = "service_mf8doym";
+const TEMPLATE_ID = "template_c0jltjj";
+const PUBLIC_KEY = "lFhOY_qZ5EulnaQST";
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: "", message: "" });
@@ -15,20 +20,18 @@ export const ContactForm: React.FC = () => {
     // Enviar email usando EmailJS
     emailjs
       .send(
-        "tu_service_id",      // reemplaza con tu Service ID
-        "tu_template_id",     // reemplaza con tu Template ID
+        SERVICE_ID,
+        TEMPLATE_ID,
         {
           from_name: formData.name,
           message: formData.message,
         },
-        "tu_public_key"       // reemplaza con tu Public Key
+        PUBLIC_KEY
       )
       .then(
         (response) => {
           console.log("Correo enviado!", response.status, response.text);
           setIsSubmitted(true);
-
-          // Reset form después de 3 segundos
           setTimeout(() => {
             setIsSubmitted(false);
             setFormData({ name: "", message: "" });
