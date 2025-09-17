@@ -1,7 +1,15 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Calendar, MapPin, Clock } from "lucide-react";
 import confetti from "canvas-confetti";
+import emailjs from "@emailjs/browser";
+
+// Constantes EmailJS (reemplaza con tus propios valores)
+const SERVICE_ID = "service_mf8doym";
+const TEMPLATE_ID = "template_c0jltjj";
+const PUBLIC_KEY = "lFhOY_qZ5EulnaQST";
 
 export const Invitation: React.FC = () => {
   const [accepted, setAccepted] = useState(false);
@@ -16,6 +24,27 @@ export const Invitation: React.FC = () => {
       origin: { y: 0.6 },
       colors: ["#F97316", "#EC4899", "#EF4444", "#F472B6"],
     });
+
+    // Enviar correo de aceptación
+    emailjs
+      .send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: "Invitado",
+          message: "Ha aceptado la invitación ",
+        },
+        PUBLIC_KEY
+      )
+      .then(
+        (response) => {
+          console.log("Correo de aceptación enviado!", response.status, response.text);
+        },
+        (err) => {
+          console.error("Error al enviar correo:", err);
+          alert("Ups, no se pudo enviar el correo.");
+        }
+      );
   };
 
   return (
@@ -71,6 +100,7 @@ export const Invitation: React.FC = () => {
                   </p>
                 </div>
 
+                {/* Información de evento */}
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="flex items-center gap-3 p-4 bg-cream-50 rounded-xl">
                     <div className="w-10 h-10 bg-coral-100 rounded-lg flex items-center justify-center">
@@ -110,9 +140,7 @@ export const Invitation: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleAccept}
-                    className="group px-8 py-4 bg-gradient-to-r 
-
-                       from-coral-500 to-coral-600 text-white font-montserrat font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+                    className="group px-8 py-4 bg-gradient-to-r from-coral-500 to-coral-600 text-white font-montserrat font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
                   >
                     <span className="flex items-center gap-2">
                       ¡Acepto con todo el corazón!
@@ -146,7 +174,7 @@ export const Invitation: React.FC = () => {
                 </motion.div>
 
                 <h3 className="font-montserrat text-3xl font-bold text-gray-800 mb-4">
-                  ¡Increíble! 
+                  ¡Increíble!
                 </h3>
 
                 <p className="font-sans text-xl text-gray-600 mb-6">
