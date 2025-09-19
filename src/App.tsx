@@ -6,6 +6,7 @@ import { Invitation } from './components/Invitation';
 import { PersonalMessage } from './components/PersonalMessage';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
+import { YellowFlowersCountdown } from './components/targetDate';
 
 function App() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -17,12 +18,13 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <Hero onExploreClick={scrollToTimeline} />
+      <YellowFlowersCountdown />
       <div ref={timelineRef}>
         <Timeline />
       </div>
       <Gallery />
       <Invitation />
-      <PersonalMessage />
+      <PersonalMessage />z
       <ContactForm />
       <Footer />
     </div>
