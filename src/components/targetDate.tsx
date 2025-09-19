@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Componente principal de React.
 export const YellowFlowersCountdown = () => {
-  const targetDate = new Date("2025-09-21T15:30:00");
+  const targetDate = new Date("2025-09-21T00:00:00");
   const [timeLeft, setTimeLeft] = useState(null);
   const [isCountdownFinished, setIsCountdownFinished] = useState(false);
   const [isVisible, setIsVisible] = useState(true); // 👈 Nuevo estado para ocultar
@@ -154,7 +154,7 @@ export const YellowFlowersCountdown = () => {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-sm sm:text-base text-gray-400">21 de septiembre de 2025, 15:30 (hora local)</p>
+      <p className="mt-4 text-sm sm:text-base text-gray-400">21 de septiembre de 2025, 00:00 (hora local)</p>
     </div>
   );
 
