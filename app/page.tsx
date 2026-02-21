@@ -10,20 +10,25 @@ import MusicSection from "@/components/MusicSection";
 import Footer from "@/components/Footer";
 import BackgroundParticles from "@/components/ui/BackgroundParticles"; // 👈 importa aquí
 
+import BookLayout from "@/components/BookLayout";
+import LoveSection from "@/components/LoveSection";
+
 export default function Home() {
   return (
-    <main className="relative overflow-x-hidden bg-white text-gray-900">
-      {/* ✨ Fondo animado para toda la página */}
+    <main className="relative overflow-x-hidden bg-[#f0ede9] text-gray-900 font-sans">
+      {/* ✨ Fondo animado */}
       <BackgroundParticles />
 
-      {/* 🔹 Contenido */}
-      <ScrollProgress />
-      <HeroSection />
-      <TimelineSection />
-      <GallerySection />
-      <LetterSection />
-      <MusicSection />
-      <Footer />
+      <BookLayout>
+        <ScrollProgress />
+        <HeroSection />
+        <TimelineSection />
+        <GallerySection />
+        <LoveSection />
+        <LetterSection />
+        <MusicSection />
+        <Footer />
+      </BookLayout>
     </main>
   );
 }

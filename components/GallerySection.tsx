@@ -13,7 +13,7 @@ const achievements = [
     description:
       "Has culminado exitosamente tu carrera en Derecho, consolidando una base sólida en justicia y legislación.",
     status: "obtenido",
-    color: "from-blue-400 to-blue-600",
+    color: "from-blue-700 to-blue-900",
     angle: 220,
   },
   {
@@ -23,7 +23,7 @@ const achievements = [
     description:
       "Estás en la etapa final de tu especialización, demostrando disciplina, enfoque y amor por el aprendizaje continuo.",
     status: "en proceso",
-    color: "from-purple-400 to-purple-600",
+    color: "from-slate-500 to-slate-700",
     angle: 140,
   },
   {
@@ -33,7 +33,7 @@ const achievements = [
     description:
       "Actualmente cursas una segunda carrera en Trabajo Social, ampliando tu perspectiva profesional hacia la comunidad y el bienestar humano.",
     status: "en progreso",
-    color: "from-pink-400 to-pink-600",
+    color: "from-[#1e3a8a] to-blue-900",
     angle: 40,
   },
   {
@@ -43,7 +43,7 @@ const achievements = [
     description:
       "Tu próximo gran objetivo académico: el doctorado. Un paso ambicioso que refleja tu compromiso con la excelencia.",
     status: "no iniciado",
-    color: "from-emerald-400 to-emerald-600",
+    color: "from-slate-400 to-slate-600",
     angle: 320,
   },
 ];
@@ -66,7 +66,9 @@ export default function ProfessionalOrbitSection() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center py-20 sm:py-28 lg:py-36 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center py-20 sm:py-28 lg:py-36 bg-transparent overflow-hidden">
+      {/* Divider / Page Split Shadow */}
+      <div className="absolute inset-y-0 left-1/2 w-px bg-black/5 blur-[2px] z-0" />
       {/* 🌟 Título principal */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -97,7 +99,7 @@ export default function ProfessionalOrbitSection() {
       <div className="relative flex items-center justify-center w-full max-w-[600px] aspect-square">
         {/* Imagen central más grande */}
         <motion.div
-          className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-60 md:h-60 rounded-full overflow-hidden shadow-2xl border-4 border-blue-200 z-10"
+          className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-60 md:h-60 rounded-full overflow-hidden shadow-2xl border-4 border-blue-950/20 z-10"
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
         >
@@ -111,7 +113,7 @@ export default function ProfessionalOrbitSection() {
 
         {/* Burbujas orbitando */}
         <div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{ transformOrigin: "center" }}
         >
           {achievements.map((item, i) => {
@@ -122,20 +124,25 @@ export default function ProfessionalOrbitSection() {
             return (
               <motion.div
                 key={item.id}
-                className={`absolute cursor-pointer bg-gradient-to-br ${item.color} text-white p-3 sm:p-4 md:p-5 rounded-full shadow-lg flex items-center justify-center`}
-                style={{
-                  transform: `translate(${x}px, ${y}px)`,
+                className={`absolute cursor-pointer bg-gradient-to-br ${item.color} text-white p-3 sm:p-4 md:p-5 rounded-full shadow-lg flex items-center justify-center pointer-events-auto`}
+                initial={{ opacity: 0, x: 0, y: 0 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: x, 
+                  y: y 
+                }}
+                transition={{ 
+                  opacity: { delay: i * 0.2 },
+                  x: { type: "spring", stiffness: 50, damping: 15 },
+                  y: { type: "spring", stiffness: 50, damping: 15 }
                 }}
                 whileHover={{
                   scale: 1.2,
                   rotate: 10,
-                  boxShadow: "0 0 25px rgba(0,0,0,0.25)",
-                  zIndex: 20,
+                  boxShadow: "0 0 30px rgba(0,0,0,0.3)",
+                  zIndex: 40,
                 }}
                 onClick={() => setSelected(item.id)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.25 }}
               >
                 <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
               </motion.div>

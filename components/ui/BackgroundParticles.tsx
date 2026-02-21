@@ -17,47 +17,49 @@ export default function BackgroundParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const generated = Array.from({ length: 30 }).map((_, i) => ({
+    const generated = Array.from({ length: 40 }).map((_, i) => ({
       id: i,
-      size: Math.random() * 18 + 8,
+      size: Math.random() * 20 + 10,
       x: Math.random() * 100,
       y: Math.random() * 100,
       delay: Math.random() * 5,
-      duration: Math.random() * 18 + 10,
-      isBook: Math.random() < 0.5, // mitad corazones, mitad libros
+      duration: Math.random() * 20 + 15,
+      isBook: Math.random() < 0.4, // 40% libros, 60% corazones
     }));
     setParticles(generated);
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
+    <div className="fixed inset-0 overflow-hidden -z-20 pointer-events-none select-none">
       {particles.map((p) => (
         <motion.div
           key={p.id}
           className={`absolute ${
-            p.isBook ? "text-blue-400" : "text-pink-500"
-          } opacity-80`}
+            p.isBook ? "text-blue-200/40" : "text-blue-300/40"
+          } drop-shadow-[0_0_8px_rgba(59,130,246,0.2)]`}
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
             fontSize: `${p.size}px`,
           }}
-          initial={{ y: p.isBook ? "100vh" : "-10vh", opacity: 0 }}
+          initial={{ y: "110vh", opacity: 0, rotate: 0 }}
           animate={{
-            y: p.isBook ? ["100vh", "-10vh"] : ["-10vh", "100vh"],
-            opacity: [0.4, 1, 0.4],
-            rotate: [0, 15, -15, 0],
+            y: ["110vh", "-10vh"],
+            opacity: [0, 0.6, 0.6, 0],
+            rotate: [0, 45, -45, 0],
+            x: [`${p.x}%`, `${p.x + (Math.random() * 10 - 5)}%`]
           }}
           transition={{
             repeat: Infinity,
             duration: p.duration,
             delay: p.delay,
-            ease: "easeInOut",
+            ease: "linear",
           }}
         >
-          {p.isBook ? "📘" : "💖"}
+          {p.isBook ? "✎" : "✨"}
         </motion.div>
       ))}
+      <div className="absolute inset-0 bg-[#f0ede9]/20" />
     </div>
   );
 }
