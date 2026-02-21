@@ -107,6 +107,7 @@ export default function ProfessionalOrbitSection() {
             src="https://raw.githubusercontent.com/Alg4ret3/EstaticosWebLove/master/images/caricatura.webp"
             alt="Perfil"
             fill
+            sizes="(max-width: 768px) 128px, (max-width: 1024px) 176px, 240px"
             className="object-cover"
           />
         </motion.div>
