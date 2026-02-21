@@ -92,7 +92,7 @@ export default function HeroSection() {
           >
             <div className="w-full h-full rounded-full overflow-hidden border-[10px] border-white/90 shadow-2xl relative">
                <Image
-                src="/images/perfil.webp"
+                src="https://raw.githubusercontent.com/Alg4ret3/EstaticosWebLove/master/images/perfil.webp"
                 alt="María Fernanda"
                 fill
                 className="object-cover"

@@ -78,7 +78,7 @@ export default function MusicSection() {
                   animate={currentSong === featuredSong.title ? { rotate: 360 } : { rotate: 0 }}
                   transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
                 >
-                  <NextImage src="/images/momentos/5.jpg" alt="Especial" fill className="object-cover" />
+                  <NextImage src="https://raw.githubusercontent.com/Alg4ret3/EstaticosWebLove/master/images/momentos/5.jpg" alt="Especial" fill className="object-cover" />
                 </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center">
                    <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">

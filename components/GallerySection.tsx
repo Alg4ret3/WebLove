@@ -104,7 +104,7 @@ export default function ProfessionalOrbitSection() {
           transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
         >
           <Image
-            src="/images/caricatura.webp"
+            src="https://raw.githubusercontent.com/Alg4ret3/EstaticosWebLove/master/images/caricatura.webp"
             alt="Perfil"
             fill
             className="object-cover"
